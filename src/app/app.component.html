@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">{{ title }}</h2>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            [ngClass]="{
+              'is-invalid': myForm.get('name')?.invalid && myForm.get('name')?.touched
+            }"
+          />
+          <div class="invalid-feedback">
+            Name is required and must be at least 3 characters.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid': myForm.get('email')?.invalid && myForm.get('email')?.touched
+            }"
+          />
+          <div class="invalid-feedback">Enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            [ngClass]="{
+              'is-invalid': myForm.get('password')?.invalid && myForm.get('password')?.touched
+            }"
+          />
+          <div class="invalid-feedback">
+            Password is required and must be at least 6 characters.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
